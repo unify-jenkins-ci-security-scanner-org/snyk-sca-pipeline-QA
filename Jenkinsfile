@@ -179,6 +179,16 @@ spec:
             }
         }
     }
+    stage('Security Scan') {
+            steps {
+                registerSecurityScan(
+                    // Security Scan to include
+                    artifacts: "snyk-sca-results.sarif",
+                    format: "sarif",
+                    archive: true
+                )
+            }
+        }
 
     post {
         always {
